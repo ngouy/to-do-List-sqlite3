@@ -1,0 +1,25 @@
+<% if task.status %>
+    <% @img = "check3.png" %>
+<% else %>
+    <% @img = "check2.png" %>
+<% end %>
+<div id="edited_task_<%= task.id %>" class="all_task">
+    <div class="un-done-div"><%= link_to (image_tag @img, class: "un-done"), task_test_path(task), remote: true, class: "un-done-link", method: :put %></div>
+    <div class="content-div">
+        <%= link_to task_edit_content_path(task), remote: true do %>
+            <p class="task-content" style="
+            text-decoration:<% if task.status%>line-through<% else %>none<% end %>;
+            opacity:<% if task.status%>0.5<% else %>1<% end %>;">
+                <%= task.content %></p>
+        <% end %>
+        <p class="change_content" style="display:none"></p>
+    </div>
+    <div class="trash-div">
+        <% if !task.status%>
+            <%= link_to (image_tag 'drop.png', class: "drop", style: "opacity:0.5"), task, remote: true, method: :delete, class: "trash-link", data: { confirm: "Sure to drop the task \"" + task.content + "\" ?" } %>
+        <% else %>
+            <%= link_to (image_tag 'drop.png', class: "drop", style: "opacity:1"), task, remote: true, method: :delete, class: "trash-link", data: { confirm: "Sure to drop the task \"" + task.content + "\" ?" } %>
+        <% end %>
+    </div>
+    
+</div>

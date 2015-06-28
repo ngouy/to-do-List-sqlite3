@@ -1,0 +1,11 @@
+$('#edited_task_<%= @task.id %>').slideUp(350);
+$('#edited_task_<%= @task.id %>').queue(function(n) {
+    $(this).remove();
+    n();
+});
+$('#rest').html( "<%= j render("rest") %> ");
+<% if Task.where(status: true).count == 0 %>
+    $('#tr').fadeOut(350);
+<% else %>
+    $('#tr').fadeIn(350);
+<% end %>

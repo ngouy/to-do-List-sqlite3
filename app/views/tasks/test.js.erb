@@ -1,0 +1,12 @@
+$('#edited_task_<%= @task.id %>').replaceWith( "<%= j render(@task) %> ");
+$('#rest').fadeOut(350);
+$('#rest').delay(0).queue(function(n) {
+    $(this).html( "<%= j render("rest") %> ");
+    n();
+});
+$('#rest').fadeIn(350);
+<% if Task.where(status: true).count == 0 %>
+    $('#tr').fadeOut(350);
+<% else %>
+    $('#tr').fadeIn(350);
+<% end %>

@@ -1,0 +1,19 @@
+<%
+@toer=Task.where(status: true)
+@toer.each do |t| %>
+  $('#edited_task_<%= t.id %>').slideUp(350).delay(350).queue(function(n) {
+      $(this).remove();
+      n();
+  });
+  <%
+    t.destroy
+  end
+%>
+    
+$('#tr').fadeOut(350);
+$('#rest').fadeOut(350);
+$('#rest').delay(0).queue(function(n) {
+    $(this).html( "<%= j render("rest") %> ");
+    n();
+});
+$('#rest').fadeIn(350);

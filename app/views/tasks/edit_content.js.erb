@@ -1,0 +1,2 @@
+$('#edited_task_<%= @task.id %> .content-div a').slideUp(350);
+$('#edited_task_<%= @task.id %> .content-div .change_content').html( "<%= j render("update_content") %> ").fadeIn(350);

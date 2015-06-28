@@ -1,0 +1,13 @@
+$('#new_task').slideUp(350);
+$('#new_link').slideDown(350);
+$('#new_link_cancel').slideUp(350);
+$('#task-form').slideUp(450);
+$('#tasks_list').append( '<%= j render(@task) %>');
+$('#edited_task_<%= @task.id %>').css("display","none");
+$('#edited_task_<%= @task.id %>').slideDown(350);
+$('#rest').fadeOut(350);
+    $('#rest').delay(0).queue(function(n) {
+        $(this).html( "<%= j render("rest") %> ");
+        n();
+    });
+     $('#rest').fadeIn(350);

@@ -1,0 +1,13 @@
+<% if Task.all.count == 0 %>
+    Nothing to do... For now
+<% elsif Task.where(status: false).count == 0 %>
+    Nothing left!<br><br><br>Let's take a cofee-break.
+<% elsif Task.where(status: false).count == 1 %>
+    <span id='nb-left'>1</span><br><br><br>thing to do. Almost there!
+<% else %>
+    <span id='nb-left'><%= Task.where(status: false).count %></span><br><br><br>things to do 
+    <% if Task.all.count ==  Task.where(status: false).count %>
+        ( all in fact ...).
+    <% else %>. Keep going!
+    <% end %>
+<% end %>

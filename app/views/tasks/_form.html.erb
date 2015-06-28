@@ -1,0 +1,14 @@
+
+<%= form_for @task, remote: true do |f| %>
+  <div class="field">
+    <%= f.label :content, "What is to do ?", id: "title-new" %><br>
+    <%= f.text_area :content %>
+  </div>
+  <div class="field" style="display:none;">
+    <%= f.label :status %><br>
+    <%= f.check_box :status %>
+  </div>
+  <div class="actions" id="sub-new">
+    <%= f.submit %>
+  </div>
+<% end %>
